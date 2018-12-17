@@ -18,12 +18,6 @@
 # define W 2560
 # define H 1440
 
-enum					type
-{
-	JULIA,
-	MADELBROT
-};
-
 typedef struct			s_dot
 {
 	float				x;
@@ -79,5 +73,7 @@ typedef struct			s_env
 	t_img				img;
 	int					type;
 }						t_env;
+
+void					kill(char *msg)
 
 #endif
