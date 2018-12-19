@@ -5,17 +5,20 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: izoukhai <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/12/17 11:43:28 by izoukhai     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/17 11:43:29 by izoukhai    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/19 17:57:42 by izoukhai     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/19 17:57:43 by izoukhai    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "zGL.h"
 
-int				main(int ac, char **av)
+int main()
 {
-	
+    t_env env;
 
-	return (0);
+    init_zgl(&env, 1000, 1000, "ss");
+    put_line(&env, new_point(0,0,0,0), new_point(500,500,0,0), 0xFF0000);
+    render(&env);
+    mlx_loop(env.mlx);
 }

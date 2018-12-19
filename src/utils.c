@@ -5,16 +5,21 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: izoukhai <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/12/17 11:46:19 by izoukhai     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/17 11:46:20 by izoukhai    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/18 18:07:01 by izoukhai     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/18 18:07:02 by izoukhai    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../zGL.h"
 
-void			kill(char *msg)
+t_point		new_point(float x, float y, float z, int color)
 {
-	ft_putstr_fd(msg, 2);
-	exit(0);
+    t_point res;
+
+    res.x = x;
+    res.y = y;
+    res.z = z;
+    res.color = color;
+    return (res);
 }

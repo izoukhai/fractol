@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   draw.c                                           .::    .:/ .      .::   */
+/*   draw_utils.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: izoukhai <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/12/17 11:34:30 by izoukhai     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/17 11:34:33 by izoukhai    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/18 17:41:13 by izoukhai     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/18 17:41:14 by izoukhai    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../zGL.h"
 
-void				img_put_pixel(t_env *env, t_dot pos, int color)
-{
-	if ((pos.x > 0 && pos.x < W) && (pos.y > 0 && pos.y < H))
-		env->img.image[((int)pos.y * W + (int)pos.x)] = color;
-}
-
-static inline void	set_line(t_dot *step, t_dot *src, t_dot *dst)
+static inline void	set_line(t_point *step, t_point *src, t_point *dst)
 {
 	(*step).x = (*dst).x - (*src).x;
 	(*step).y = (*dst).y - (*src).y;
 }
 
-void				draw_line(t_env *env, t_dot src, t_dot dst, int color)
+static inline void	set_point(t_point *pos, t_point src, int i, t_point step)
 {
-	t_dot			step;
+	(*pos).x = src.x + i * step.x;
+	(*pos).y = src.y + i * step.y;
+}
+
+void				put_line(t_env *env, t_point src, t_point dst, int color)
+{
+	t_point			step;
 	int				n;
 	int				i;
-	t_dot			pos;
+	t_point			pos;
 
 	i = -1;
 	set_line(&step, &src, &dst);
@@ -48,8 +48,8 @@ void				draw_line(t_env *env, t_dot src, t_dot dst, int color)
 	}
 	while (++i < n)
 	{
-		new_point(&pos, src, i, step);
+		set_point(&pos, src, i, step);
 		if ((pos.x >= 0 && pos.x <= W) && (pos.y >= 0 && pos.y <= H))
-			img_put_pixel(env, pos, color);
+			put_pixel(env, pos, color);
 	}
 }
