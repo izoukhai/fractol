@@ -1,21 +1,18 @@
-NAME=zGL.a
-SRC= src/draw.c src/line.c src/utils.c src/zGL.c
+NAME=fractol
+SRC= main.c fractol.c complex.c zGL/zGL.a zGL/libft/libft.a
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):$(OBJ)
-	make -C minilib
-	mv minilib/libmlx.a zGL.a
-	make -C libft
-	ar rcs zGL.a libft/*.o
-	gcc -c $(SRC) -Wall -Werror -Wextra
-	ar rcs zGL.a $(OBJ)
-	rm -f draw.o line.o utils.o zGL.o
-	rm -f $(OBJ)
+	make -C zGL
+	gcc $(SRC) -o $(NAME) -Wall -Wextra -Werror -lX11 -lXext -lm
 
 clean:
 	rm -f $(OBJ)
-	rm -f draw.o line.o utils.o zGL.o zGL.a
+
+run:
+	make
+	./fractol
 
 re: clean all
