@@ -23,3 +23,9 @@ t_point		new_point(float x, float y, float z, int color)
     res.color = color;
     return (res);
 }
+
+void        die(char *msg)
+{
+    ft_putstr_fd(msg, 2);
+    exit(1);
+}

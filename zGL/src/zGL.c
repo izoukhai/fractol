@@ -11,8 +11,11 @@ void				init_zgl(t_env *env, int width, int height, char *w_name)
 				&(env->img.szl), &(env->img.endian));
 }
 
-void				render(t_env *env)
+void				render(t_env *env, void (*func)(), int bclear)
 {
+	if (bclear)
+		clear(env);
+	func(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img.ptr, 0, 0);
 }
 

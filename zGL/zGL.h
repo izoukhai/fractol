@@ -64,20 +64,33 @@ typedef struct		s_file
 	int				fd;
 }					t_file;
 
+typedef struct 		s_complex
+{
+	double r;
+	double i;
+}              	 	t_complex;
+
+typedef struct		s_fractal
+{
+	int				type;
+	t_complex		max;
+	t_complex		min;
+	int				iter;
+}					t_fractal;
+
 typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
-	t_map			**map;
+	t_fractal		fractal;
 	t_img			img;
 	t_cam			cam;
 	t_index			win_size;
-	t_file			file;
 }					t_env;
 
 /**** CORE FUNCS ****/
 void				init_zgl(t_env *env, int width, int height, char *w_name);
-void				render(t_env *env);
+void				render(t_env *env, void (*func)(t_env*), int bclear);
 void				clear(t_env *env);
 
 /**** DRAW FUNCS ****/
@@ -87,5 +100,6 @@ void                put_rect(t_env *env, t_point pos, t_point size, t_byte fill,
 
 /**** UTILS FUNCS ****/
 t_point				new_point(float x, float y, float z, int color);
+void				die(char *msg);
 
 #endif
