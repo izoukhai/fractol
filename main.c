@@ -1,10 +1,5 @@
 #include "fractol.h"
 
-/*t_complex min = {-1.5, -1};
-t_complex max = {0.7, 1};
-int			iter = 155;
-float zoom = 1;*/
-
 void		mandelbrot(t_env *env)
 {
 	t_point 	pos;
@@ -25,7 +20,6 @@ void		mandelbrot(t_env *env)
 		}
 	}
 }
-
 
 int			main(int ac, char **arg)
 {
