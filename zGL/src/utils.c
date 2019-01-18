@@ -11,21 +11,21 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../zGL.h"
+#include "../zgl.h"
 
 t_point		new_point(float x, float y, float z, int color)
 {
-    t_point res;
+	t_point res;
 
-    res.x = x;
-    res.y = y;
-    res.z = z;
-    res.color = color;
-    return (res);
+	res.x = x;
+	res.y = y;
+	res.z = z;
+	res.color = color;
+	return (res);
 }
 
-void        die(char *msg)
+void		die(char *msg)
 {
-    ft_putstr_fd(msg, 2);
-    exit(1);
+	ft_putstr_fd(msg, 2);
+	exit(1);
 }

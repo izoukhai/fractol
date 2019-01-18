@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../zGL.h"
+#include "../zgl.h"
 
 static inline void	set_line(t_point *step, t_point *src, t_point *dst)
 {

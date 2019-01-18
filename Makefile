@@ -1,12 +1,12 @@
 NAME=fractol
-SRC= main.c fractol.c complex.c
+SRC= main.c fractol.c complex.c algo.c fractals.c
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):$(OBJ)
+$(NAME):$(OBJ) fractol.h
 	make -C zGL
-	gcc $(SRC) zGL/zGL.a zGL/libft/libft.a -o $(NAME) -Wall -Wextra -Werror -lX11 -lXext -lm
+	gcc $(SRC) zGL/zgl.a zGL/libft/libft.a -o $(NAME) -Wall -Wextra -Werror -framework OpenGL -framework AppKit
 
 clean:
 	rm -f $(OBJ)

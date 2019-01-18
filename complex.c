@@ -1,42 +1,35 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   complex.c                                        .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: izoukhai <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/01/18 05:30:45 by izoukhai     #+#   ##    ##    #+#       */
+/*   Updated: 2019/01/18 05:30:47 by izoukhai    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-t_complex   c_sum(t_complex a, t_complex b)
+t_complex	c_sum(t_complex a, t_complex b)
 {
-    a.r += b.r;
-    a.i += b.i;
-    return(a);
+	a.r += b.r;
+	a.i += b.i;
+	return (a);
 }
 
-double		toReal(t_point pos, t_env *env, double minR, double maxR)
+double		to_real(t_point pos, const double minr,
+	const double maxr, t_env *env)
 {
-	double dist;
-
-	dist = maxR - minR;
-	return (pos.x * (dist / env->win_size.x) + minR);
+	return (((pos.x * ((maxr - minr) / WIN_W) + minr) * env->zoom)) +
+	env->offset_x;
 }
 
-double		toComplex(t_point pos, t_env *env, double minI, double maxI)
+double		to_complex(t_point pos, const double mini,
+	const double maxi, t_env *env)
 {
-	double dist;
-
-	dist = maxI - minI;
-	return (pos.y * (dist / env->win_size.y) + minI);
-}
-
-int			calcMandel(t_complex cur, int n)
-{
-	int		i;
-	t_complex z;
-	double	tmp;
-
-	i = -1;;
-	z.r = 0;
-	z.i = 0;
-	while (++i < n && z.r * z.r + z.i * z.i < 4)
-	{
-		tmp = z.r * z.r - z.i * z.i + cur.r;
-		z.i = 2 * z.r * z.i + cur.i;
-		z.r = tmp;
-	}
-	return (i);
+	return (((pos.y * ((maxi - mini) / WIN_H) + mini) * env->zoom)) +
+	env->offset_y;
 }
