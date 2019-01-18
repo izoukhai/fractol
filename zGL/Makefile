@@ -4,7 +4,7 @@ OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):$(OBJ)
+$(NAME):$(OBJ) zgl.h
 	make -C minilib
 	mv minilib/libmlx.a zgl.a
 	make -C libft

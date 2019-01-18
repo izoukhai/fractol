@@ -11,8 +11,11 @@ $(NAME):$(OBJ) fractol.h
 clean:
 	rm -f $(OBJ)
 
+fclean: clean
+		rm -rf $(NAME)
+
 run:
 	make
 	./fractol
 
-re: clean all
+re: fclean all

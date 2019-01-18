@@ -4,7 +4,7 @@ OBJ = ft_bzero.o ft_memccpy.o ft_memcpy.o ft_memmove.o ft_memset.o ft_strcat.o f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):$(OBJ)
 	gcc -c $(FILES) -Wall -Wextra -Werror
 	ar rcs libft.a $(OBJ)
 
