@@ -67,7 +67,7 @@ int			main(int ac, char **arg)
 	t_env env;
 
 	if (ac != 2)
-		die("usage: ./fractol [julia | mandelbrot]\n");
+		die("usage: ./fractol [julia | mandelbrot | burningship]\n");
 	init_fractol(&env, arg[1]);
 	mlx_hook(env.win, 2, 0, h_key, &env);
 	mlx_mouse_hook(env.win, h_mouse, &env);

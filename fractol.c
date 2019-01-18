@@ -32,7 +32,7 @@ static inline void	get_fractal(t_env *env, char *arg)
 	else if (ft_strcmp(arg, "burningship") == 0)
 		env->fractal = BURNINGSHIP;
 	else
-		die("usage: ./fractol [julia | mandelbrot]\n");
+		die("usage: ./fractol [julia | mandelbrot | burningship]\n");
 	env->iter = 90;
 	env->zoom = 1.f;
 	env->b_mouse = -1;
