@@ -1,21 +1,21 @@
 NAME=fractol
-SRC= main.c fractol.c complex.c algo.c fractals.c
+SRC= src/main.c src/fractol.c src/complex.c src/algo.c src/fractals.c src/draw.c src/utils.c src/zgl.c
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
-
+	make -C libft/
+	
 $(NAME):$(OBJ) fractol.h
-	make -C zGL
-	gcc $(SRC) zGL/zgl.a zGL/libft/libft.a -o $(NAME) -Wall -Wextra -Werror -framework OpenGL -framework AppKit
+	make -C libft/
+	make -C minilib/
+	gcc $(SRC) minilib/libmlx.a libft/libft.a -o $(NAME) -Wall -Wextra -Werror -framework OpenGL -framework AppKit
 
 clean:
-	rm -f $(OBJ)
+		make clean -C libft/
+		make clean -C minilib/
+	   	rm -f $(OBJ)
 
-fclean: clean
+fclean: clean 
 		rm -rf $(NAME)
-
-run:
-	make
-	./fractol
 
 re: fclean all
