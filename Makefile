@@ -8,7 +8,7 @@ all: $(NAME)
 $(NAME):$(OBJ) fractol.h
 	make -C libft/
 	make -C minilib/
-	gcc $(SRC) minilib/libmlx.a libft/libft.a -o $(NAME) -Wall -Wextra -Werror -framework OpenGL -framework AppKit
+	gcc $(SRC) minilib/libmlx.a libft/libft.a -o $(NAME) -Wall -Wextra -Werror -framework OpenGL -framework AppKit -O3
 
 clean:
 		make clean -C libft/
